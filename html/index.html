@@ -11,13 +11,49 @@
 </head>
 <body>
   <div class="main">
-    <div>
+    <div id='declarative'>
       <h4>声明式渲染</h4>
-      <span id="msg">{{ message }}</span>
+      <span>{{ message }}</span>
+    </div>
+    <div id="directive">
+      <h4>设置标签属性</h4>
+      <!-- v-bind 被称为指令，Vue 提供的所有指令都以v-开头 -->
+      <span v-bind:title="message">Hover your mouse over here for a few seconds to see the dynamically bound title!</span>
+    </div>
+    <div id='condition'>
+      <h4>条件判断</h4>
+      <span v-if="show">Now you see me!</span>
+    </div>
+    <div id="loop">
+      <h4>循环</h4>
+      <ol>
+        <li v-for="i in arr">
+          {{ i.text }}
+        </li>
+      </ol>
+    </div>
+    <div id="event">
+      <h4>事件监听</h4>
+      <p>{{ message }}</p>
+      <!-- v-on 指令用来设置事件监听 -->
+      <button v-on:click='reverse'>Reverse Message</button>
+    </div>
+    <div id="two-way">
+      <h4>双向绑定</h4>
+      <p>{{ message }}</p>
+      <!-- v-model 指令用来实现双向绑定 -->
+      <input v-model="message">
+    </div>
+    <div id="component">
+      <h4>动态组件</h4>
+      <ol>
+        <!-- todo 是用Vue定义的一个动态组件 -->
+        <todo v-for="it in array" v-bind:thing="it" v-bind:key="it.id"></todo>
+      </ol>
     </div>
   </div>
 
-  <script src="../js/vue.js"></script>
+  <script src="../js/vue-2.6.10/vue.js"></script>
   <script src="../js/index.js"></script>
 </body>
 </html>
